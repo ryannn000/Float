@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Float Keys",
+  "version": "3.0",
+  "description": "Add as many draggable, customizable floating buttons as you like that press keys on any website (WASD, Z/X/C, arrows, anything).",
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Show / hide floating buttons"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "lock-main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
